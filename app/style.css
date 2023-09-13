@@ -49,3 +49,9 @@ button {
     display: grid;
     grid-template-columns: 300px auto;
 }
+
+.flex-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
