@@ -7,5 +7,45 @@
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <form>
+      <div class="form-body">
+        <h1>Add Recipe</h1>
+        <div class="form-elements">
+          <label for="recipe-name">Recipe Name :</label>
+          <input
+            type="text"
+            name="recipe title"
+            placeholder="Title of the recipe"
+            id="recipe-name"
+          />
+        </div>
+        <div class="form-elements">
+          <label for="time-taken">Preparation Time :</label>
+          <input type="time" name="Preparation Time" id="time-taken" />
+        </div>
+        <div class="form-elements">
+          <label for="steps-todo">Steps ToDo:</label>
+          <div>
+            <textarea name="Steps" id="steps-todo" rows="10" cols="30">
+            </textarea>
+          </div>
+        </div>
+        <div>
+          <label for="recipe-img">Image of the recipe :</label>
+          <input type="url" placeholder="paste image url" id="recipe-img" />
+        </div>
+
+        <div>
+          <button>Add Recipe</button>
+        </div>
+      </div>
+      <div id="card-count">
+        <p>Total Recipes :</p>
+        <div id="count"></div>
+      </div>
+    </form>
+    <!-- recipe Card -->
+    <div id="display-card"></div>
+  </body>
 </html>
