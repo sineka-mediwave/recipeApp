@@ -67,11 +67,6 @@ function updateUi() {
   }
 }
 
-//function to append the html division
-function appendToApp(recipe) {
-  cardBody.appendChild(recipe);
-}
-
 //function to clear the UI
 function clearApp() {
   cardBody.innerHTML = "";
@@ -137,6 +132,3 @@ function remove(recipeId) {
   recipeItems = filterArrray;
   setToLocalStorage();
 }
-
-//function to display time as hr and min
-function displayTime(time) {}

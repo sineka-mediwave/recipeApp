@@ -14,6 +14,8 @@ body {
 h1,h2 {
   text-align: center;
   padding: 20px 0;
+  color: #606C5D;
+  
 }
 
 h3 {
@@ -104,6 +106,8 @@ button {
 }
 
 .stepsTodo {
+    margin-top: 10px;
   width: 300px;
   height: 150px;
+  color: #757575;
 }
