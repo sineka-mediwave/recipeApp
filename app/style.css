@@ -11,9 +11,14 @@ body {
   background-color: #fff4f4;
 }
 
-h1 {
+h1,h2 {
   text-align: center;
   padding: 20px 0;
+}
+
+h3 {
+    padding-right: 10px;
+    color: #333;
 }
 
 input {
@@ -69,12 +74,18 @@ button {
   .recipe-card {
     grid-template-columns: auto;
   }
+
+  .flex-box {
+    flex-direction: column;
+    
+  }
 }
 
 .imageBox {
   margin-bottom: 10px;
   width: 210px;
   height: 210px;
+  text-align: center;
   background-color: #f7e6c4;
   border-radius: 8px;
 }
@@ -89,9 +100,10 @@ button {
 .flex {
   display: flex;
   align-items: center;
+  
 }
 
 .stepsTodo {
-  width: 250px;
+  width: 300px;
   height: 150px;
 }

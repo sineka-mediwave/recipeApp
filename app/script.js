@@ -4,8 +4,6 @@ const cardBody = document.querySelector("#display-card");
 let recipeItems = [];
 
 const recipeCount = document.querySelector("#count");
-recipeCount.innerText = "cardCount";
-console.log("print");
 
 // Main function
 updateForm();
@@ -65,6 +63,7 @@ function updateUi() {
   for (let i = 0; i < recipeItems.length; i++) {
     const recipeDiv = displayCard(recipeItems[i]);
     cardBody.appendChild(recipeDiv);
+    recipeCount.innerText = recipeItems.length;
   }
 }
 
@@ -108,7 +107,7 @@ function displayCard(recipe) {
 
   const labelTt = document.createElement("h3");
   labelTt.innerText = "Time Taken :";
-  const min = document.createElement("p");
+  const min = document.createElement("time");
   min.innerText = recipe["time"];
   time.append(labelTt, min);
 
