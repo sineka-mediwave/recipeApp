@@ -1,122 +1,30 @@
-//Global variable
-const card = document.querySelector("#display-card");
+//Inialize the global vaiable
+const cardBody = document.querySelector("#display-card");
 
-//Create object for the card details
-let recipeDetails = [
-  {
-    id: "2335",
-    title: "burger",
-    time: "30min",
-    steps: "procedure",
-  },
-];
+let recipeItems = [];
 
-//data fetch form local storage
+const recipeCount = document.querySelector("#count");
+recipeCount.innerText = "cardCount";
+console.log("print");
+
+// Main function
 updateForm();
 getFromLocalSorage();
 
-// Function to get data from localStorage
-function getFromLocalSorage() {
-  const str = localStorage.getItem("recipe-list");
-  if (!str) {
-    recipeDetails = [];
-  } else {
-    recipeDetails = JSON.parse(str);
-  }
-  updateUi();
-}
-
-// function to save data in local storage
-function setToLocalStorage() {
-  const str = JSON.stringify(recipeDetails);
-  localStorage.setItem("recipe-list", str);
-  updateUi();
-}
-
-//function to display UI
-function updateUi() {
-  clearApp();
-  for (let i = 0; i < recipeDetails.length; i++) {
-    const cardDiv = displayCardDiv(recipeDetails[i]);
-    appendTohtml(cardDiv);
-  }
-}
-
-//function to append the html division
-function appendTohtml(cardDiv) {
-  card.appendChild(cardDiv);
-}
-
-//function to clear the UI
-function clearApp() {
-  card.innerHTML = "";
-}
-
-//code for creating card
-function displayCardDiv(recipe) {
-  //   const totalRecipe = document.createElement("div"); //main division
-  const cardBox = document.createElement("div"); //main division
-  cardBox.setAttribute("class", "recipe-card");
-  //adding id attribute to div
-  const id = `eat-${recipe["id"]}`;
-  cardBox.setAttribute("id", id);
-
-  const imageBox = document.createElement("div"); //left side image division
-  const contentBox = document.createElement("div"); //right side content division
-
-  cardBox.appendChild(imageBox, contentBox);
-
-  const pictureDiv = document.createElement("div"); //to display picture division
-  imageBox.appendChild(pictureDiv);
-
-  const headerBox = document.createElement("div"); //flex header division
-  headerBox.setAttribute("class", "flex-box");
-
-  const stepsBox = document.createElement("div"); //main division
-
-  contentBox.appendChild(headerBox, stepsBox, DeleteBtn);
-
-  const title = document.createElement("h2"); //button to delete card
-  h2.innerText = recipe["title"];
-
-  const time = document.createElement("p"); //button to delete card
-  p.innerText = recipe["time"];
-
-  headerBox.appendChild(title, time);
-
-  const DeleteBtn = document.createElement("button"); //button to delete card
-
-  DeleteBtn.addEventListener("click", function () {
-    remove(recipe["id"]);
-  });
-
-  return cardBox;
-}
-
-//remove function
-function remove(recipeId) {
-  const filterArrray = favMovies.filter((recipe) => recipe.id != recipeId);
-  recipeDetails = filterArrray;
-  setToLocalStorage();
-}
-
-//function to add form data
 function updateForm() {
   const form = document.querySelector("#recipe-form");
   form.addEventListener("submit", function (r) {
     r.preventDefault();
-    console.log("title");
-    getFormElements();
+    updateFormElements();
   });
 }
 
-//function to add form elements
-function getFormElements() {
+function updateFormElements() {
   // fetch form data
-  const title = document.querySelector("#recipe-name").value;
-  const time = document.querySelector("#time-taken").value;
-  const steps = document.querySelector("#steps-todo").value;
-  const image = document.querySelector("#recipe-img").value;
+  const title = document.querySelector("#recipeName").value;
+  const time = document.querySelector("#timeTaken").value;
+  const steps = document.querySelector("#stepsTodo").value;
+  const image = document.querySelector("#recipeImg").value;
 
   const recipe = {
     id: new Date().getTime(),
@@ -130,6 +38,102 @@ function getFormElements() {
 
 //function to add recipe
 function addRecipe(recipe) {
-  recipeDetails.push(recipe);
+  recipeItems.push(recipe);
+  setToLocalStorage();
+}
+
+// function to save data in local storage
+function setToLocalStorage() {
+  const str = JSON.stringify(recipeItems);
+  localStorage.setItem("Recipes", str);
+  updateUi();
+}
+
+// Function to get data from localStorage
+function getFromLocalSorage() {
+  const str = localStorage.getItem("Recipes");
+  if (!str) {
+    recipeItems = [];
+  } else {
+    recipeItems = JSON.parse(str);
+  }
+  updateUi();
+}
+
+function updateUi() {
+  clearApp();
+  for (let i = 0; i < recipeItems.length; i++) {
+    const recipeDiv = displayCard(recipeItems[i]);
+    cardBody.appendChild(recipeDiv);
+  }
+}
+
+//function to append the html division
+function appendToApp(recipe) {
+  cardBody.appendChild(recipe);
+}
+
+//function to clear the UI
+function clearApp() {
+  cardBody.innerHTML = "";
+}
+
+updateUi();
+// creating card using HTML tags
+function displayCard(recipe) {
+  const cardBox = document.createElement("div");
+  cardBox.setAttribute("class", "recipe-card");
+  const id = `item-${recipe["id"]}`;
+  cardBox.setAttribute("id", id);
+
+  const imageBox = document.createElement("div");
+  imageBox.setAttribute("class", "imageBox");
+
+  const img = document.createElement("img");
+  img.setAttribute("class", "img");
+  img.src = recipe["image"];
+  imageBox.append(img);
+
+  const contentBox = document.createElement("div");
+  contentBox.setAttribute("class", "contentBox");
+  cardBox.append(imageBox, contentBox);
+
+  const headerBox = document.createElement("div"); //flex header division
+  headerBox.setAttribute("class", "flex-box");
+  const title = document.createElement("h2");
+  title.innerText = recipe["title"];
+  const time = document.createElement("div"); //flex header division
+  time.setAttribute("class", "flex");
+  headerBox.append(title, time);
+
+  const labelTt = document.createElement("h3");
+  labelTt.innerText = "Time Taken :";
+  const min = document.createElement("p");
+  min.innerText = recipe["time"];
+  time.append(labelTt, min);
+
+  const stepsBox = document.createElement("div"); //flex header division
+  const labelSt = document.createElement("h3");
+  labelSt.innerText = "Steps Todo :";
+  const steps = document.createElement("p");
+  steps.setAttribute("class", "stepsTodo");
+  steps.innerText = recipe["steps"];
+  stepsBox.append(labelSt, steps);
+
+  const DeleteBtn = document.createElement("button"); //button to delete card
+  DeleteBtn.textContent = "delete";
+  DeleteBtn.addEventListener("click", function () {
+    remove(recipe["id"]);
+    console.log("remove");
+  });
+  contentBox.append(headerBox, stepsBox, DeleteBtn);
+
+  return cardBox;
+}
+
+//Function to remove
+function remove(recipeId) {
+  const filterArrray = recipeItems.filter((recipe) => recipe.id != recipeId);
+  recipeItems = filterArrray;
   setToLocalStorage();
 }

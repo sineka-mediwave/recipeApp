@@ -1,57 +1,97 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Poppins:wght@500&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat','poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", "poppins", sans-serif;
 }
 
 body {
-    margin: 30px;
-    background-color: #FFF4F4;
+  margin: 30px;
+  background-color: #fff4f4;
 }
 
 h1 {
-    text-align: center;
-    padding: 20px 0;
+  text-align: center;
+  padding: 20px 0;
 }
 
 input {
-    margin-bottom: 20px;
-    padding: 5PX 10PX;
-    border: none;
-    border-radius: 8PX;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 8px;
 }
+
 button {
-    padding: 10px;
+  margin-top: 5px;
+  padding: 5px 10px;
+  float: right;
+  border-radius: 8px;
+}
+.img {
+    padding: 4px;
+    width: 200px;
+    height: 200px;
     border-radius: 8px;
 }
-
 /* html form styling */
-.form-body {  
-    padding: 30px;
-    background-color: #F7E6C4;
-    border-radius: 20px;
-    text-align: left;  
+.form-body {
+  padding: 30px;
+  background-color: #f7e6c4;
+  border-radius: 20px;
+  text-align: left;
 }
 
-#card-count {
-    text-align: right;
+.form-element {
+  margin-bottom: 20px;
+}
+
+.total-recipe {
+  margin-bottom: 20px;
+  text-align: right;
 }
 
 #count {
-    width: 30px;
-    background-color: aliceblue;
+  width: 30px;
 }
 
 /* card design */
 .recipe-card {
-    display: grid;
-    grid-template-columns: 300px auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: #F1C376;
+  border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+  .recipe-card {
+    grid-template-columns: auto;
+  }
+}
+
+.imageBox {
+  margin-bottom: 10px;
+  width: 210px;
+  height: 210px;
+  background-color: #f7e6c4;
+  border-radius: 8px;
 }
 
 .flex-box {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+    margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.stepsTodo {
+  width: 250px;
+  height: 150px;
 }

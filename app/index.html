@@ -5,51 +5,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recipe App</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="card.js" defer></script>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <form id="recipe-form">
       <div class="form-body">
-        <h1>Add Recipe</h1>
-        <div class="form-elements">
-          <label for="recipe-name">Recipe Name :</label>
+        <h1>Add Favrouite Recipe</h1>
+        <div class="form-element">
+          <label for="recipeName">Recipe Name : </label>
           <input
+            id="recipeName"
             type="text"
-            name="recipe title"
-            placeholder="Title of the recipe"
-            id="recipe-name"
+            placeholder="Enter title of the recipe "
+            required
           />
         </div>
-        <div class="form-elements">
-          <label for="time-taken">Preparation Time :</label>
+
+        <div class="form-element">
+          <label for="timeTaken">Preparation Time :</label>
           <input
-            type="number"
-            name="Preparation Time"
-            placeholder="time consumed"
-            id="time-taken"
+            id="timeTaken"
+            type="time"
+            placeholder="Enter time consumed"
+            required
           />
         </div>
-        <div class="form-elements">
-          <label for="steps-todo">Steps ToDo:</label>
+
+        <div class="form-element">
+          <label for="stepsTodo">Steps ToDo:</label>
           <div>
-            <textarea name="Steps" id="steps-todo" rows="10" cols="30">
+            <textarea name="Steps" id="stepsTodo" rows="10" cols="30" required>
             </textarea>
           </div>
         </div>
-        <div>
-          <label for="recipe-img">Image of the recipe :</label>
-          <input type="url" placeholder="paste image url" id="recipe-img" />
+
+        <div class="form-element">
+          <label for="recipeImg">Image of the recipe :</label>
+          <input
+            type="url"
+            placeholder="paste image url"
+            id="recipeImg"
+            required
+          />
         </div>
 
-        <div>
-          <input type="submit" value="add-recipe" id="submit-btn" />
-        </div>
-      </div>
-      <div id="card-count">
-        <p>Total Recipes :</p>
-        <div id="count"></div>
+        <input type="submit" value="add-recipe" id="submitBtn" />
       </div>
     </form>
+    <div class="total-recipe">
+      <p>
+        Total Recipes :
+        <span id="count"></span>
+      </p>
+    </div>
     <!-- recipe Card -->
     <div id="display-card"></div>
   </body>
