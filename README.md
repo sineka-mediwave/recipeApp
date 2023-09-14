@@ -10,4 +10,10 @@ Display the form input data in the console, while clicking submit
 
 added card using form input content and sumbit button
 
-## Added max time
+## Added time split and total card count
+
+```
+t = recipe["time"].split(":");
+  min.innerText = t[0] + "hrs" + t[1] + "mins";
+  time.append(labelTt, min);
+```

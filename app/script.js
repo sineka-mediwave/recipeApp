@@ -108,7 +108,8 @@ function displayCard(recipe) {
   const labelTt = document.createElement("h3");
   labelTt.innerText = "Time Taken :";
   const min = document.createElement("time");
-  min.innerText = recipe["time"];
+  t = recipe["time"].split(":");
+  min.innerText = t[0] + "hrs" + t[1] + "mins";
   time.append(labelTt, min);
 
   const stepsBox = document.createElement("div"); //flex header division
@@ -136,3 +137,6 @@ function remove(recipeId) {
   recipeItems = filterArrray;
   setToLocalStorage();
 }
+
+//function to display time as hr and min
+function displayTime(time) {}
