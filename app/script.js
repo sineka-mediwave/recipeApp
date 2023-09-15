@@ -15,6 +15,7 @@ function updateForm() {
     r.preventDefault();
     updateFormElements();
   });
+  form.reset();
 }
 
 function updateFormElements() {
