@@ -15,7 +15,6 @@ function updateForm() {
     r.preventDefault();
     updateFormElements();
   });
-  form.reset();
 }
 
 function updateFormElements() {
@@ -33,6 +32,7 @@ function updateFormElements() {
     image: image,
   };
   addRecipe(recipe);
+  document.querySelector("#recipe-form").reset();
 }
 
 //function to add recipe
